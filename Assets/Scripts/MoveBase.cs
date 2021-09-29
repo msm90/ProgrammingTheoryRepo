@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+// ABSTRACTION.
 abstract public class MoveBase : MonoBehaviour
 {
 
@@ -10,6 +11,8 @@ abstract public class MoveBase : MonoBehaviour
     protected float jumpForce = 300f;
     private Rigidbody playerRigidBody;
     private float m_Speed;
+
+    // ENCAPSULATION
     public float Speed 
     { 
         get {
@@ -40,17 +43,22 @@ abstract public class MoveBase : MonoBehaviour
         SetSpeed();
     }
 
+    // ABSTRACTION.
     protected abstract void SetSpeed();
 
+    // POLYMORPHISM
     protected virtual void Move()
     {
 
     }
 
+    // POLYMORPHISM
     protected void Move(Vector3 horizontalVector, Vector3 verticalVector)
     {
         this.transform.Translate((horizontalVector + verticalVector).normalized * Time.deltaTime * Speed);
     }
+    
+    // POLYMORPHISM
     protected void Move(Vector3 moveVector)
     {
         this.transform.Translate(moveVector.normalized * Time.deltaTime * Speed);
